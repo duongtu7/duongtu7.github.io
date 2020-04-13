@@ -1,0 +1,47 @@
+.container
+{
+    /* background-color: aqua; */
+    max-width: 1700px !important;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(72,250,167,1) 35%, rgba(0,212,255,1) 100%);
+    height: 100%;
+}
+
+.card-title
+{
+    font-size: 1.5em;
+    font-family: "ParisineNew2","Gill Sans","Gill Sans MT",'Calibri',sans-serif;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-top: 0;
+}
+
+.card
+{
+    height: 100%;
+}
+
+.msg-title
+{
+    color: blue;
+    font-weight: bold;
+}
+
+.message{
+    color: red;
+    font-weight: bold;
+}
+
+.code{
+    font-size: 1.5em;
+}
+
+
+/* Weather */
+.weather-content{
+    margin-left: 2em;
+}
+
+.weather-label{
+    font-weight: 700;
+}

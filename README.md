@@ -1,2 +1,2 @@
-# duongtu7.github.io
- Dashboard
+# duongtu.github.io
+My dashboard

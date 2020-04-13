@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <script src="bootstrap/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="home.css">
+    <script type="text/javascript" src="home.js"></script>
+    <script>
+        $( document ).ready(function() {       
+            BindCitiesToSelector();     
+            InitInfoRerB();
+            InitWeather();
+            ScheduleBuresAller();
+            ScheduleBuresRetour();
+
+            $('#ddlCity').on('change', function() {
+                console.log( this.value );
+                InitWeather();
+            });
+        });
+    </script>
+</head>
+
+<body>    
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-title">Info trafic RER B</div>
+                <div id='card-rer-B' class="card-body">
+                    <div class="loading-msg">Loading data......
+                        <img src="ajax-loader.gif">
+                    </div>                    
+                    <div class="msg-title"></div>
+                    <div class="msg-content"></div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm">        
+            <div id='card-rer-A' class="card">
+                <div class="card-title">Weather</div>
+                <div id="weatherPanel" class="card-body">
+                    <div class="loading-msg">Loading data......
+                        <img src="ajax-loader.gif">
+                    </div>
+
+                    <div id='weatherInfo' class="invisible">                        
+                        <div>
+                            <span class="weather-label">City</span>
+                            <div class="weather-content">
+                                <select id="ddlCity" class="browser-default custom-select">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="weather-label">Current weather</span>
+                            <div class="weather-content weather-current"></div>
+                        </div>
+                        <div>
+                            <span class="weather-label">Description</span>
+                            <div class="weather-content weather-description"></div>
+                        </div>                        
+                        <div>
+                            <img class="weather-icon" src="">
+                        </div>
+                        <div>
+                            <span class="weather-label">Temperature (°C)</span>
+                            <div class="weather-content weather-temp"></div>
+                        </div>    
+                        <div>
+                            <span class="weather-label">Feels like (°C)</span>
+                            <div class="weather-content weather-temp-feel-like"></div>
+                        </div>    
+                        <div>
+                            <span class="weather-label">Temperature min/max (°C)</span>
+                            <div class="weather-content weather-temp-min-max"></div>
+                        </div>    
+                        <div>
+                            <span class="weather-label">Pressure (hPa)</span>
+                            <div class="weather-content weather-pressure"></div>
+                        </div>    
+                        <div>
+                            <span class="weather-label">Humidity (%)</span>
+                            <div class="weather-content weather-humidity"></div>
+                        </div>                         
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">            
+            <div class="card">
+                <div class="card-title">Horaires Bures -> Paris</div>
+                <div id='card-info-Bures-A' class="card-body">
+                    <div class="loading-msg">Loading data......
+                        <img src="ajax-loader.gif">
+                    </div>   
+                    <div id="schedule-info-A">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-title">Horaires Bures -> St Rémy</div>
+                <div id='card-info-Bures-R' class="card-body">
+                    <div class="loading-msg">Loading data......
+                        <img src="ajax-loader.gif">
+                    </div>   
+                    <div id="schedule-info-R">
+                        
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
