@@ -557,6 +557,7 @@
           <thead>
             <tr>
               <th style="width: 50px; text-align: center;">✓</th>
+              <th style="width: 50px; text-align: center;">👤</th>
               <th>Trigram</th>
               <th style="width: 90px; text-align: center;">Duration</th>
             </tr>
@@ -664,6 +665,25 @@
     const progressFill = document.getElementById('progressFill');
     const sessionComplete = document.getElementById('sessionComplete');
 
+    // Funny avatar emojis (only single-character emojis to avoid duplicates)
+    const avatarEmojis = [
+      "🦊", "🐸", "🐵", "🦁", "🐯", "🐻", "🐼", "🐨", "🦄", "🐲",
+      "🐙", "🦋", "🦀", "🐢", "🦉", "🦇", "🐺", "🦈", "🐡", "🦑",
+      "🤖", "👽", "👻", "🎃", "🦖", "🦕", "🐉", "🧙", "🧛", "🧟",
+      "🦸", "🦹", "🥸", "🤠", "🎅", "🐰", "🐶", "🐱", "🦝", "🦥"
+    ];
+
+    // Store assigned avatars for current session
+    let memberAvatars = {};
+
+    // Assign random avatars to all members
+    function assignRandomAvatars() {
+      const shuffled = [...avatarEmojis].sort(() => Math.random() - 0.5);
+      users.forEach((_, index) => {
+        memberAvatars[index] = shuffled[index % shuffled.length];
+      });
+    }
+
     // Programming quotes
     const quotes = [
       "There are only 10 types of people in the world: those who understand binary and those who don't.",
@@ -749,6 +769,8 @@
     // Load users
     function loadUsers() {
       users = usersData;
+      // Assign random avatars
+      assignRandomAvatars();
       // Select all users by default except THH and VML
       selectedUsers = users
         .map((user, index) => ({ user, index }))
@@ -784,6 +806,7 @@
                      onchange="toggleUser(${index})">
             </div>
           </td>
+          <td style="text-align: center; font-size: 1.5rem; line-height: 1;">${memberAvatars[index] || '👤'}</td>
           <td><span class="user-code">${user.code}</span></td>
           <td style="text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-secondary);">${formatDuration(speakingDurations[index] || 0)}</td>
         </tr>
@@ -1041,6 +1064,9 @@
       users.forEach((_, index) => {
         speakingDurations[index] = 0;
       });
+      
+      // Assign new random avatars for next session
+      assignRandomAvatars();
 
       startBtn.style.display = 'flex';
       resetBtn.style.display = 'none';
